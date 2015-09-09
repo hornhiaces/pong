@@ -5,9 +5,16 @@
 static NSString *TFViewControllerBoundaryIdentifierTop = @"top";
 static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 
+@interface TFViewController () {
+    NSInteger * playerOneScore;
+    NSInteger* playerTwoScore;
+}
+
+@end
+
 @implementation TFViewController
 
-- (void)viewDidLoad
+- (void)viewDidLoad   // Physics and conditions are set for movement of ball and control of paddals and coditions for boundries from TFPaddle Class and TF Ball Class
 {
     [super viewDidLoad];
 
@@ -15,8 +22,12 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 
     // Rotate the first player's instructions
     self.playerOneInstructions.transform = CGAffineTransformMakeRotation(M_PI);
-
-    // Set up collision detection
+    
+    // Rotate Player Two's Score
+    self.playerTwoScore.transform = CGAffineTransformMakeRotation(M_PI);
+    
+    
+        // Set up collision detection
     self.collider = [[UICollisionBehavior alloc] initWithItems:@[self.ball, self.playerOnePaddle, self.playerTwoPaddle]];
     self.collider.collisionMode = UICollisionBehaviorModeEverything;
     self.collider.translatesReferenceBoundsIntoBoundary = YES;
@@ -53,7 +64,7 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 }
 
 // This is responsible for moving the ball back to the center,
-// and telling players to tap for a new game
+// and telling players to tap for a new game or reseting the state of the ball
 - (void)promptNextBall {
     self.startInstructions.hidden = NO;
 
@@ -70,6 +81,16 @@ static NSString *TFViewControllerBoundaryIdentifierBottom = @"bottom";
 
     // Only end the current game if the ball hit either the top or bottom screen edge
     if ([@[TFViewControllerBoundaryIdentifierBottom, TFViewControllerBoundaryIdentifierTop] containsObject:identifier]) {
+        if ([@[TFViewControllerBoundaryIdentiferTop] containsObject:identifier])
+        // TFVIewControllerB ountryTop
+            // increment top player score
+            // set top player score text
+        // TFBottom
+            // increment bottom player scrore
+            // set bottom player score text
+        
+        //if total score == 10 display game over
+        
         [self promptNextBall];
     }
 }

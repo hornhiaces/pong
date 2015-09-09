@@ -10,6 +10,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerOneInstructions;
 @property (weak, nonatomic) IBOutlet UILabel *playerTwoInstructions;
 @property (weak, nonatomic) IBOutlet UIView *startInstructions;
+@property (weak, nonatomic) IBOutlet UILabel *playerOneScore;
+@property (weak, nonatomic) IBOutlet UILabel *playerTwoScore;
 
 @property (strong, nonatomic) UIPushBehavior *initialBallForce;
 @property (strong, nonatomic) UICollisionBehavior *collider;
